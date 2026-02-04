@@ -1,0 +1,17 @@
+grafana:
+  admin:
+    existingSecret: "grafana-secret"
+  service:
+    type: LoadBalancer
+    port: 9010
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-path
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 2Gi
+    
